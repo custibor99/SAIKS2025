@@ -12,19 +12,28 @@ flowchart TD
     Game -- developed by --> Person["Person"]
     Game -- published by --> Publisher["Publisher"]
     Game -- features --> Character["Character"]
+    
     GameType -- types --> SinglePlayer["Single Player"] & Multiplayer["Multiplayer"] & Competitive["Competitive"]
     Genre -- types --> RPG["RPG"] & MMORPG["MMORPG"] & FPS["FPS"] & Strategy["Strategy"]
     Product -- types --> Skin["Skin"] & Item["Item"] & Expansion["Expansion"]
     Product -- forSale in --> Game
+    
     Publisher -- owns --> Company["Company"]
     Company -- has --> CompanyTitle["company title"]
     Company -- based in --> Country["company country"]
-    Person -- roles --> Developer["Developer"] & ArtDirector["Art Director"] & Composer["Composer"] & VoiceActor["Voice Actor"] & Player["Player"]
-    Person -- workedOn --> Game
+    
+    Person --> Developer["Developer"] & ArtDirector["Art Director"] & Composer["Composer"] & VoiceActor["Voice Actor"] & Player["Player"]
+    Developer -- workedOn --> Game
+    ArtDirector -- workedOn --> Game
+    Composer -- workedOn --> Game
+    VoiceActor -- workedOn --> Game
+    
     Rating -- has --> NumberOfRatings["number of ratings"] & Score["score"] & Completion["completion percentage"]
     Character -- has --> CharacterName["character name"]
+    
     Event["Event"] -- types --> Competition["Competition"] & Leaderboard["Leaderboard"]
     Event -- has --> Record["record"] & Prize["prize"] & EventScore["score"] & Match["match"]
+    
     Player -- competes in --> Event
     Player -- memberOf --> Team["Team"]
     Team -- won --> Event
