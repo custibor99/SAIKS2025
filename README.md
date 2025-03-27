@@ -25,13 +25,21 @@ Are there any already existing ontologies?
 
 ### Step 3. Enumerate essential terms in the ontology
 Game, title, description, release date, game series, cinematic universe, platform, game_url
+
 Game type -> single player, mutiplayer, competitive, genre -> RPG, MMORPG, ..., 
+
 Game product (anything for sale in game) -> skin, item, expansion, ...
+
 Company, company title, company country, number of employees, publisher, developer
+
 rating, number of ratings, score, completion
+
 Character, character name,
+
 event, leaderboard, record, competition, team, prize, score, match
+
 person, lead developer, art director, composer, voice actor, player (in the context of esport team) ...
+
 part of, developed, owns, availableOn (platform), competed in, worked on, published, for sale, won, lost, 
 
 ### Step 4. Define the classes and the class hierarchy
