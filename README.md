@@ -56,6 +56,8 @@ Additionally, illustrate the use of at least 3 different Ontologies
 Design Patterns (ODPs). These can be selected from those described during the lecture or
 from the ODP [website](http://ontologydesignpatterns.org/wiki/Main_Page)
 
+- part of design patern
+
 
 
 
