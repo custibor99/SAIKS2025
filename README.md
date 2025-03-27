@@ -24,6 +24,9 @@ Are there any already existing ontologies?
 2. [Corporations and their products ontology](https://spec.edmcouncil.org/fibo/ontology/BE/LegalEntities/FormalBusinessOrganizations/)
 
 ### Step 3. Enumerate essential terms in the ontology
+
+![OR](doc/figures/or-diagram.svg "Video Games")
+
 Game, title, description, release date, game series, cinematic universe, platform, game_url
 
 Game type -> single player, mutiplayer, competitive, genre -> RPG, MMORPG, ..., 
