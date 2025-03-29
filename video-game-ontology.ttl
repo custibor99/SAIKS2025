@@ -1,442 +1,739 @@
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <http://https://github.com/custibor99/SAIKS2025#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix game: <http://example.org/game-ontology#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://https://github.com/custibor99/SAIKS2025> .
 
-# Ontology declaration
-<http://example.org/game-ontology> rdf:type owl:Ontology ;
-    rdfs:label "Game Ontology" ;
-    rdfs:comment "An ontology describing video games, their properties, and related entities." .
-
-#################################################################
-#    Classes
-#################################################################
-
-# Main Classes
-game:Game rdf:type owl:Class ;
-    rdfs:label "Game" ;
-    rdfs:comment "A video game" .
-
-game:GameSeries rdf:type owl:Class ;
-    rdfs:label "Game Series" ;
-    rdfs:comment "A series of related games" .
-
-game:Platform rdf:type owl:Class ;
-    rdfs:label "Platform" ;
-    rdfs:comment "A hardware or software platform on which games can be played" .
-
-game:GameType rdf:type owl:Class ;
-    rdfs:label "Game Type" ;
-    rdfs:comment "The type of gameplay a game offers" .
-
-game:Genre rdf:type owl:Class ;
-    rdfs:label "Genre" ;
-    rdfs:comment "A category of games characterized by a particular style, form, or content" .
-
-game:Person rdf:type owl:Class ;
-    rdfs:label "Person" ;
-    rdfs:comment "A person involved in games as developer, player, etc." .
-
-game:Publisher rdf:type owl:Class ;
-    rdfs:label "Publisher" ;
-    rdfs:comment "An entity that publishes games" .
-
-game:Character rdf:type owl:Class ;
-    rdfs:label "Character" ;
-    rdfs:comment "A character that appears in a game" .
-
-game:Product rdf:type owl:Class ;
-    rdfs:label "Game Product/DLC" ;
-    rdfs:comment "Additional content or products related to a game" .
-
-game:Rating rdf:type owl:Class ;
-    rdfs:label "Rating" ;
-    rdfs:comment "Evaluation metrics for a game" .
-
-game:Company rdf:type owl:Class ;
-    rdfs:label "Company" ;
-    rdfs:comment "A business entity that creates or publishes games" .
-
-game:Country rdf:type owl:Class ;
-    rdfs:label "Country" ;
-    rdfs:comment "A country where a company is based" .
-
-game:Event rdf:type owl:Class ;
-    rdfs:label "Event" ;
-    rdfs:comment "An organized gaming event or competition" .
-
-game:Team rdf:type owl:Class ;
-    rdfs:label "Team" ;
-    rdfs:comment "A group of players who compete together" .
-
-game:Record rdf:type owl:Class ;
-    rdfs:label "Record" ;
-    rdfs:comment "A notable achievement or statistic in a game or event" .
-
-game:Prize rdf:type owl:Class ;
-    rdfs:label "Prize" ;
-    rdfs:comment "A reward given in a gaming competition" .
-
-game:Match rdf:type owl:Class ;
-    rdfs:label "Match" ;
-    rdfs:comment "A single instance of competitive gameplay" .
-
-# Person Subclasses
-game:Developer rdf:type owl:Class ;
-    rdfs:subClassOf game:Person ;
-    rdfs:label "Developer" ;
-    rdfs:comment "A person who develops games" .
-
-game:ArtDirector rdf:type owl:Class ;
-    rdfs:subClassOf game:Person ;
-    rdfs:label "Art Director" ;
-    rdfs:comment "A person who directs the artistic aspects of a game" .
-
-game:Composer rdf:type owl:Class ;
-    rdfs:subClassOf game:Person ;
-    rdfs:label "Composer" ;
-    rdfs:comment "A person who composes music for games" .
-
-game:VoiceActor rdf:type owl:Class ;
-    rdfs:subClassOf game:Person ;
-    rdfs:label "Voice Actor" ;
-    rdfs:comment "A person who provides voice acting for game characters" .
-
-game:Player rdf:type owl:Class ;
-    rdfs:subClassOf game:Person ;
-    rdfs:label "Player" ;
-    rdfs:comment "A person who plays games" .
-
-# GameType Subclasses
-game:SinglePlayer rdf:type owl:Class ;
-    rdfs:subClassOf game:GameType ;
-    rdfs:label "Single Player" ;
-    rdfs:comment "A game designed for one player" .
-
-game:Multiplayer rdf:type owl:Class ;
-    rdfs:subClassOf game:GameType ;
-    rdfs:label "Multiplayer" ;
-    rdfs:comment "A game designed for multiple players" .
-
-game:Competitive rdf:type owl:Class ;
-    rdfs:subClassOf game:GameType ;
-    rdfs:label "Competitive" ;
-    rdfs:comment "A game designed for competitive play" .
-
-# Genre Subclasses
-game:RPG rdf:type owl:Class ;
-    rdfs:subClassOf game:Genre ;
-    rdfs:label "RPG" ;
-    rdfs:comment "Role-playing game genre" .
-
-game:MMORPG rdf:type owl:Class ;
-    rdfs:subClassOf game:RPG ;
-    rdfs:label "MMORPG" ;
-    rdfs:comment "Massively multiplayer online role-playing game genre" .
-
-game:FPS rdf:type owl:Class ;
-    rdfs:subClassOf game:Genre ;
-    rdfs:label "FPS" ;
-    rdfs:comment "First-person shooter genre" .
-
-game:Strategy rdf:type owl:Class ;
-    rdfs:subClassOf game:Genre ;
-    rdfs:label "Strategy" ;
-    rdfs:comment "Strategy game genre" .
-
-# Product Subclasses
-game:Skin rdf:type owl:Class ;
-    rdfs:subClassOf game:Product ;
-    rdfs:label "Skin" ;
-    rdfs:comment "Cosmetic item that changes a character's appearance" .
-
-game:Item rdf:type owl:Class ;
-    rdfs:subClassOf game:Product ;
-    rdfs:label "Item" ;
-    rdfs:comment "An in-game item available as additional content" .
-
-game:Expansion rdf:type owl:Class ;
-    rdfs:subClassOf game:Product ;
-    rdfs:label "Expansion" ;
-    rdfs:comment "Significant additional content that expands a game" .
-
-# Event Subclasses
-game:Competition rdf:type owl:Class ;
-    rdfs:subClassOf game:Event ;
-    rdfs:label "Competition" ;
-    rdfs:comment "An organized gaming competition" .
-
-game:Leaderboard rdf:type owl:Class ;
-    rdfs:subClassOf game:Event ;
-    rdfs:label "Leaderboard" ;
-    rdfs:comment "A ranked listing of players or teams" .
+<http://https://github.com/custibor99/SAIKS2025> rdf:type owl:Ontology ;
+                                                  rdfs:comment "An ontology describing video games, their properties, and related entities." ;
+                                                  rdfs:label "Game Ontology" .
 
 #################################################################
 #    Object Properties
 #################################################################
 
-game:hasTitle rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Game ;
-    rdfs:range xsd:string ;
-    rdfs:label "has title" ;
-    rdfs:comment "The title of a game" .
+###  http://https://github.com/custibor99/SAIKS2025#Lost
+:Lost rdf:type owl:ObjectProperty ;
+      rdfs:subPropertyOf owl:topObjectProperty ;
+      rdfs:domain :Team ;
+      rdfs:range :Competition ,
+                 :Event ,
+                 :Match ;
+      owl:propertyDisjointWith :hasWon ;
+      rdfs:label "hasLost"@en .
 
-game:hasDescription rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Game ;
-    rdfs:range xsd:string ;
-    rdfs:label "has description" ;
-    rdfs:comment "The description of a game" .
 
-game:hasReleaseDate rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Game ;
-    rdfs:range xsd:date ;
-    rdfs:label "has release date" ;
-    rdfs:comment "The release date of a game" .
+###  http://https://github.com/custibor99/SAIKS2025#hasGameType
+:hasGameType rdf:type owl:ObjectProperty ;
+             rdfs:domain :Game ;
+             rdfs:range :GameType .
 
-game:hasGameURL rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Game ;
-    rdfs:range xsd:anyURI ;
-    rdfs:label "has game URL" ;
-    rdfs:comment "The URL associated with a game" .
 
-game:hasRating rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Game ;
-    rdfs:range game:Rating ;
-    rdfs:label "has rating" ;
-    rdfs:comment "The rating of a game" .
+###  http://https://github.com/custibor99/SAIKS2025#hasParticipant
+:hasParticipant rdf:type owl:ObjectProperty ;
+                rdfs:domain :Participation ;
+                rdfs:range <http://https://github.com/custibor99/SAIKS2025/Participant> ;
+                rdfs:label "hasParticipant"@en .
 
-game:hasProduct rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Game ;
-    rdfs:range game:Product ;
-    rdfs:label "has product" ;
-    rdfs:comment "Additional content or products associated with a game" .
 
-game:partOfSeries rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Game ;
-    rdfs:range game:GameSeries ;
-    rdfs:label "part of series" ;
-    rdfs:comment "The game series a game belongs to" .
+###  http://https://github.com/custibor99/SAIKS2025#hasRole
+:hasRole rdf:type owl:ObjectProperty ;
+         rdfs:domain :Participation ;
+         rdfs:range :Role ;
+         rdfs:label "hasRole"@en .
 
-game:availableOnPlatform rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Game ;
-    rdfs:range game:Platform ;
-    rdfs:label "available on platform" ;
-    rdfs:comment "The platform a game is available on" .
 
-game:hasGameType rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Game ;
-    rdfs:range game:GameType ;
-    rdfs:label "has game type" ;
-    rdfs:comment "The type of gameplay a game offers" .
+###  http://https://github.com/custibor99/SAIKS2025#hasWon
+:hasWon rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty ;
+        rdfs:domain :Team ;
+        rdfs:range :Competition ,
+                   :Event ,
+                   :Match ;
+        rdfs:label "hasWon"@en .
 
-game:hasGenre rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Game ;
-    rdfs:range game:Genre ;
-    rdfs:label "has genre" ;
-    rdfs:comment "The genre of a game" .
 
-game:developedBy rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Game ;
-    rdfs:range game:Person ;
-    rdfs:label "developed by" ;
-    rdfs:comment "The person who developed a game" .
+###  http://https://github.com/custibor99/SAIKS2025#locatedIn
+:locatedIn rdf:type owl:ObjectProperty ;
+           rdfs:domain :Company ,
+                       :Event ;
+           rdfs:range <http://https://github.com/custibor99/SAIKS2025/Location> ;
+           rdfs:label "locatedIn"@en .
 
-game:publishedBy rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Game ;
-    rdfs:range game:Publisher ;
-    rdfs:label "published by" ;
-    rdfs:comment "The publisher of a game" .
 
-game:featuresCharacter rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Game ;
-    rdfs:range game:Character ;
-    rdfs:label "features character" ;
-    rdfs:comment "A character featured in a game" .
+###  http://https://github.com/custibor99/SAIKS2025#partOf
+:partOf rdf:type owl:ObjectProperty ,
+                 owl:TransitiveProperty ;
+        rdfs:comment "partOf"@en .
 
-game:forSaleIn rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Product ;
-    rdfs:range game:Game ;
-    rdfs:label "for sale in" ;
-    rdfs:comment "The game in which a product is available for sale" .
 
-game:ownsCompany rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Publisher ;
-    rdfs:range game:Company ;
-    rdfs:label "owns company" ;
-    rdfs:comment "A company owned by a publisher" .
+###  http://https://github.com/custibor99/SAIKS2025#partOfCompany
+:partOfCompany rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :partOf ;
+               rdfs:domain :Team ,
+                           <http://ontology.eil.utoronto.ca/icity/Person/Person> ;
+               rdfs:range :Company ;
+               owl:propertyChainAxiom ( :partOfTeam
+                                        :partOfCompany
+                                      ) ;
+               rdfs:comment "partOfCompany"@en .
 
-game:hasCompanyTitle rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Company ;
-    rdfs:range xsd:string ;
-    rdfs:label "has company title" ;
-    rdfs:comment "The title of a company" .
 
-game:basedInCountry rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Company ;
-    rdfs:range game:Country ;
-    rdfs:label "based in country" ;
-    rdfs:comment "The country a company is based in" .
+###  http://https://github.com/custibor99/SAIKS2025#partOfCompetition
+:partOfCompetition rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :partOf ;
+                   rdfs:domain :Match ,
+                               :Team ;
+                   rdfs:range :Competition ;
+                   owl:propertyChainAxiom ( :partOfMatch
+                                            :partOfCompetition
+                                          ) ;
+                   rdfs:comment "partOfCompetition"@en .
 
-game:workedOnGame rdf:type owl:ObjectProperty ;
-    rdfs:domain [ rdf:type owl:Class ;
-                 owl:unionOf ( game:Developer game:ArtDirector game:Composer game:VoiceActor )
-               ] ;
-    rdfs:range game:Game ;
-    rdfs:label "worked on game" ;
-    rdfs:comment "The game a person worked on" .
 
-game:hasNumberOfRatings rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Rating ;
-    rdfs:range xsd:positiveInteger ;
-    rdfs:label "has number of ratings" ;
-    rdfs:comment "The number of ratings a game has received" .
+###  http://https://github.com/custibor99/SAIKS2025#partOfExpansion
+:partOfExpansion rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :partOf ;
+                 rdfs:domain :Item ,
+                             :Skin ;
+                 rdfs:range :Expansion ;
+                 rdfs:label "partOfExpansion"@en .
 
-game:hasScore rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Rating ;
-    rdfs:range xsd:decimal ;
-    rdfs:label "has score" ;
-    rdfs:comment "The score of a game's rating" .
 
-game:hasCompletionPercentage rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Rating ;
-    rdfs:range xsd:decimal ;
-    rdfs:label "has completion percentage" ;
-    rdfs:comment "The percentage of players who completed a game" .
+###  http://https://github.com/custibor99/SAIKS2025#partOfGame
+:partOfGame rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :partOf ;
+            rdfs:domain :PurchesableContent ;
+            rdfs:range :Game ;
+            owl:propertyChainAxiom ( :partOfExpansion
+                                     :partOfGame
+                                   ) ;
+            rdfs:label "partOfGame"@en .
 
-game:hasCharacterName rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Character ;
-    rdfs:range xsd:string ;
-    rdfs:label "has character name" ;
-    rdfs:comment "The name of a character" .
 
-game:hasRecord rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Event ;
-    rdfs:range game:Record ;
-    rdfs:label "has record" ;
-    rdfs:comment "A record associated with an event" .
+###  http://https://github.com/custibor99/SAIKS2025#partOfMatch
+:partOfMatch rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :partOf ;
+             rdfs:domain :Team ;
+             rdfs:range :Match .
 
-game:hasPrize rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Event ;
-    rdfs:range game:Prize ;
-    rdfs:label "has prize" ;
-    rdfs:comment "A prize offered in an event" .
 
-game:hasEventScore rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Event ;
-    rdfs:range xsd:decimal ;
-    rdfs:label "has event score" ;
-    rdfs:comment "The score in an event" .
+###  http://https://github.com/custibor99/SAIKS2025#partOfSeries
+:partOfSeries rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :partOf ;
+              rdf:type owl:TransitiveProperty ;
+              rdfs:domain :Game ,
+                          :GameSeries ;
+              rdfs:range :GameSeries ;
+              rdfs:label "partOfSeries"@en .
 
-game:hasMatch rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Event ;
-    rdfs:range game:Match ;
-    rdfs:label "has match" ;
-    rdfs:comment "A match that is part of an event" .
 
-game:competesInEvent rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Player ;
-    rdfs:range game:Event ;
-    rdfs:label "competes in event" ;
-    rdfs:comment "An event a player competes in" .
+###  http://https://github.com/custibor99/SAIKS2025#partOfTeam
+:partOfTeam rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :partOf ;
+            rdfs:domain <http://https://github.com/custibor99/SAIKS2025/Player> ;
+            rdfs:range :Team ;
+            rdfs:label "partOfTeam"@en .
 
-game:memberOfTeam rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Player ;
-    rdfs:range game:Team ;
-    rdfs:label "member of team" ;
-    rdfs:comment "The team a player is a member of" .
 
-game:wonEvent rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Team ;
-    rdfs:range game:Event ;
-    rdfs:label "won event" ;
-    rdfs:comment "An event won by a team" .
+###  http://https://github.com/custibor99/SAIKS2025#workedOn
+:workedOn rdf:type owl:ObjectProperty ;
+          rdfs:domain :Participation ;
+          rdfs:range :Game ;
+          rdfs:label "workedOn"@en .
 
-game:lostEvent rdf:type owl:ObjectProperty ;
-    rdfs:domain game:Team ;
-    rdfs:range game:Event ;
-    rdfs:label "lost event" ;
-    rdfs:comment "An event lost by a team" .
+
+###  http://https://github.com/custibor99/SAIKS2025/availableOn
+<http://https://github.com/custibor99/SAIKS2025/availableOn> rdf:type owl:ObjectProperty ;
+                                                             rdfs:domain :Game ;
+                                                             rdfs:range :Platform ,
+                                                                        <http://https://github.com/custibor99/SAIKS2025/OperatingSystem> ;
+                                                             rdfs:label "availableOn"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/hasOS
+<http://https://github.com/custibor99/SAIKS2025/hasOS> rdf:type owl:ObjectProperty ;
+                                                       rdfs:domain :Platform ;
+                                                       rdfs:range <http://https://github.com/custibor99/SAIKS2025/OperatingSystem> ;
+                                                       rdfs:comment "has operating system"@en ;
+                                                       rdfs:label "hasOS"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/hasRating
+<http://https://github.com/custibor99/SAIKS2025/hasRating> rdf:type owl:ObjectProperty ;
+                                                           rdfs:domain :Game ;
+                                                           rdfs:range <http://https://github.com/custibor99/SAIKS2025/Rating> .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/partOfCity
+<http://https://github.com/custibor99/SAIKS2025/partOfCity> rdf:type owl:ObjectProperty ;
+                                                            rdfs:subPropertyOf :partOf ;
+                                                            rdfs:domain <http://https://github.com/custibor99/SAIKS2025/Steet> ;
+                                                            rdfs:range <http://https://github.com/custibor99/SAIKS2025/City> ;
+                                                            rdfs:label "partOfCity"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/partOfCountry
+<http://https://github.com/custibor99/SAIKS2025/partOfCountry> rdf:type owl:ObjectProperty ;
+                                                               rdfs:subPropertyOf :partOf ;
+                                                               rdf:type owl:TransitiveProperty ;
+                                                               rdfs:domain <http://https://github.com/custibor99/SAIKS2025/City> ,
+                                                                           <http://https://github.com/custibor99/SAIKS2025/Steet> ;
+                                                               rdfs:range :Country ;
+                                                               owl:propertyChainAxiom ( <http://https://github.com/custibor99/SAIKS2025/partOfCity>
+                                                                                        <http://https://github.com/custibor99/SAIKS2025/partOfCountry>
+                                                                                      ) ;
+                                                               rdfs:label "partOfCountry" .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/partOfUniverse
+<http://https://github.com/custibor99/SAIKS2025/partOfUniverse> rdf:type owl:ObjectProperty ;
+                                                                rdfs:subPropertyOf :partOf ;
+                                                                rdfs:domain :Game ,
+                                                                            :GameSeries ;
+                                                                rdfs:range <http://https://github.com/custibor99/SAIKS2025/CinematicUniverse> ;
+                                                                rdfs:label "partOfCinematicUniverse"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/sold
+<http://https://github.com/custibor99/SAIKS2025/sold> rdf:type owl:ObjectProperty ;
+                                                      rdfs:domain :Game ;
+                                                      rdfs:range <http://https://github.com/custibor99/SAIKS2025/Sale> .
+
 
 #################################################################
-#    Data Properties
+#    Data properties
 #################################################################
 
-game:title rdf:type owl:DatatypeProperty ;
-    rdfs:domain game:Game ;
-    rdfs:range xsd:string ;
-    rdfs:label "title" ;
-    rdfs:comment "The title of a game" .
+###  http://https://github.com/custibor99/SAIKS2025/LastName
+<http://https://github.com/custibor99/SAIKS2025/LastName> rdf:type owl:DatatypeProperty ;
+                                                          rdfs:subPropertyOf <http://https://github.com/custibor99/SAIKS2025/name> ;
+                                                          rdfs:domain <http://ontology.eil.utoronto.ca/icity/Person/Person> ;
+                                                          rdfs:range xsd:string .
 
-game:description rdf:type owl:DatatypeProperty ;
-    rdfs:domain game:Game ;
-    rdfs:range xsd:string ;
-    rdfs:label "description" ;
-    rdfs:comment "The description of a game" .
 
-game:releaseDate rdf:type owl:DatatypeProperty ;
-    rdfs:domain game:Game ;
-    rdfs:range xsd:date ;
-    rdfs:label "release date" ;
-    rdfs:comment "The release date of a game" .
+###  http://https://github.com/custibor99/SAIKS2025/averageRating
+<http://https://github.com/custibor99/SAIKS2025/averageRating> rdf:type owl:DatatypeProperty ;
+                                                               rdfs:domain <http://https://github.com/custibor99/SAIKS2025/Rating> ;
+                                                               rdfs:range xsd:float .
 
-game:gameURL rdf:type owl:DatatypeProperty ;
-    rdfs:domain game:Game ;
-    rdfs:range xsd:anyURI ;
-    rdfs:label "game URL" ;
-    rdfs:comment "The URL associated with a game" .
 
-game:companyTitle rdf:type owl:DatatypeProperty ;
-    rdfs:domain game:Company ;
-    rdfs:range xsd:string ;
-    rdfs:label "company title" ;
-    rdfs:comment "The title of a company" .
+###  http://https://github.com/custibor99/SAIKS2025/companyName
+<http://https://github.com/custibor99/SAIKS2025/companyName> rdf:type owl:DatatypeProperty ;
+                                                             rdfs:subPropertyOf <http://https://github.com/custibor99/SAIKS2025/name> ;
+                                                             rdfs:domain :Company ;
+                                                             rdfs:range xsd:string .
 
-game:numberOfRatings rdf:type owl:DatatypeProperty ;
-    rdfs:domain game:Rating ;
-    rdfs:range xsd:positiveInteger ;
-    rdfs:label "number of ratings" ;
-    rdfs:comment "The number of ratings a game has received" .
 
-game:score rdf:type owl:DatatypeProperty ;
-    rdfs:domain game:Rating ;
-    rdfs:range xsd:decimal ;
-    rdfs:label "score" ;
-    rdfs:comment "The score of a game's rating" .
+###  http://https://github.com/custibor99/SAIKS2025/companyVision
+<http://https://github.com/custibor99/SAIKS2025/companyVision> rdf:type owl:DatatypeProperty ;
+                                                               rdfs:subPropertyOf <http://https://github.com/custibor99/SAIKS2025/description> ;
+                                                               rdfs:domain :Company ;
+                                                               rdfs:range xsd:string .
 
-game:completionPercentage rdf:type owl:DatatypeProperty ;
-    rdfs:domain game:Rating ;
-    rdfs:range xsd:decimal ;
-    rdfs:label "completion percentage" ;
-    rdfs:comment "The percentage of players who completed a game" .
 
-game:characterName rdf:type owl:DatatypeProperty ;
-    rdfs:domain game:Character ;
-    rdfs:range xsd:string ;
-    rdfs:label "character name" ;
-    rdfs:comment "The name of a character" .
+###  http://https://github.com/custibor99/SAIKS2025/completionPercentage
+<http://https://github.com/custibor99/SAIKS2025/completionPercentage> rdf:type owl:DatatypeProperty ;
+                                                                      rdfs:domain <http://https://github.com/custibor99/SAIKS2025/Rating> ;
+                                                                      rdfs:range xsd:float .
 
-game:eventScore rdf:type owl:DatatypeProperty ;
-    rdfs:domain game:Event ;
-    rdfs:range xsd:decimal ;
-    rdfs:label "event score" ;
-    rdfs:comment "The score in an event" .
 
-# Additional assertions and axioms
+###  http://https://github.com/custibor99/SAIKS2025/dateOfBirth
+<http://https://github.com/custibor99/SAIKS2025/dateOfBirth> rdf:type owl:DatatypeProperty ;
+                                                             rdfs:domain <http://ontology.eil.utoronto.ca/icity/Person/Person> ;
+                                                             rdfs:range xsd:dateTime .
 
-# Define some disjoint classes
-game:Person owl:disjointWith game:Game, game:Character, game:Company .
-game:Game owl:disjointWith game:Event, game:Character, game:Team .
-game:Product owl:disjointWith game:Person, game:Event, game:Company .
 
-# Define some inverse properties
-game:developedBy owl:inverseOf game:workedOnGame .
-game:memberOfTeam owl:inverseOf [ rdf:type owl:ObjectProperty ;
-                                 rdfs:label "has member" ;
-                                 rdfs:domain game:Team ;
-                                 rdfs:range game:Player ] .
+###  http://https://github.com/custibor99/SAIKS2025/description
+<http://https://github.com/custibor99/SAIKS2025/description> rdf:type owl:DatatypeProperty ;
+                                                             rdfs:subPropertyOf owl:topDataProperty ;
+                                                             rdfs:domain :Game ,
+                                                                         :GameSeries ,
+                                                                         :PurchesableContent ,
+                                                                         <http://https://github.com/custibor99/SAIKS2025/CinematicUniverse> ;
+                                                             rdfs:range xsd:string .
 
-# Some functional properties (can only have one value)
-game:hasTitle rdf:type owl:FunctionalProperty .
-game:hasReleaseDate rdf:type owl:FunctionalProperty .
-game:basedInCountry rdf:type owl:FunctionalProperty .
+
+###  http://https://github.com/custibor99/SAIKS2025/endDateTime
+<http://https://github.com/custibor99/SAIKS2025/endDateTime> rdf:type owl:DatatypeProperty ;
+                                                             rdfs:domain :Event ,
+                                                                         :Participation ;
+                                                             rdfs:range xsd:dateTime .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/firstName
+<http://https://github.com/custibor99/SAIKS2025/firstName> rdf:type owl:DatatypeProperty ;
+                                                           rdfs:subPropertyOf <http://https://github.com/custibor99/SAIKS2025/name> ;
+                                                           rdfs:domain <http://ontology.eil.utoronto.ca/icity/Person/Person> ;
+                                                           rdfs:range xsd:string .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/gameTitle
+<http://https://github.com/custibor99/SAIKS2025/gameTitle> rdf:type owl:DatatypeProperty ;
+                                                           rdfs:subPropertyOf <http://https://github.com/custibor99/SAIKS2025/name> ;
+                                                           rdfs:domain :Game ;
+                                                           rdfs:range xsd:string .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/gender
+<http://https://github.com/custibor99/SAIKS2025/gender> rdf:type owl:DatatypeProperty ;
+                                                        rdfs:domain <http://ontology.eil.utoronto.ca/icity/Person/Person> ;
+                                                        rdfs:range xsd:string .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/genreDescription
+<http://https://github.com/custibor99/SAIKS2025/genreDescription> rdf:type owl:DatatypeProperty ;
+                                                                  rdfs:subPropertyOf <http://https://github.com/custibor99/SAIKS2025/description> ;
+                                                                  rdfs:domain :Genre ;
+                                                                  rdfs:range xsd:string .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/inGameName
+<http://https://github.com/custibor99/SAIKS2025/inGameName> rdf:type owl:DatatypeProperty ;
+                                                            rdfs:subPropertyOf <http://https://github.com/custibor99/SAIKS2025/name> ;
+                                                            rdfs:domain <http://https://github.com/custibor99/SAIKS2025/Player> ;
+                                                            rdfs:range xsd:string .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/matchDate
+<http://https://github.com/custibor99/SAIKS2025/matchDate> rdf:type owl:DatatypeProperty .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/name
+<http://https://github.com/custibor99/SAIKS2025/name> rdf:type owl:DatatypeProperty ;
+                                                      rdfs:range xsd:string .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/numberOfCopiesSold
+<http://https://github.com/custibor99/SAIKS2025/numberOfCopiesSold> rdf:type owl:DatatypeProperty ;
+                                                                    rdfs:domain <http://https://github.com/custibor99/SAIKS2025/Sale> ;
+                                                                    rdfs:range xsd:int .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/osVersion
+<http://https://github.com/custibor99/SAIKS2025/osVersion> rdf:type owl:DatatypeProperty ;
+                                                           rdfs:domain <http://https://github.com/custibor99/SAIKS2025/OperatingSystem> ;
+                                                           rdfs:range xsd:string .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/releaseDate
+<http://https://github.com/custibor99/SAIKS2025/releaseDate> rdf:type owl:DatatypeProperty ;
+                                                             rdfs:domain :Game .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/revenue
+<http://https://github.com/custibor99/SAIKS2025/revenue> rdf:type owl:DatatypeProperty ;
+                                                         rdfs:domain <http://https://github.com/custibor99/SAIKS2025/Sale> ;
+                                                         rdfs:range xsd:integer .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/roleDescription
+<http://https://github.com/custibor99/SAIKS2025/roleDescription> rdf:type owl:DatatypeProperty ;
+                                                                 rdfs:subPropertyOf <http://https://github.com/custibor99/SAIKS2025/description> ;
+                                                                 rdfs:domain :Role ;
+                                                                 rdfs:range xsd:string .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/sampleSize
+<http://https://github.com/custibor99/SAIKS2025/sampleSize> rdf:type owl:DatatypeProperty ;
+                                                            rdfs:domain <http://https://github.com/custibor99/SAIKS2025/Rating> ;
+                                                            rdfs:range xsd:float .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/shortSummary
+<http://https://github.com/custibor99/SAIKS2025/shortSummary> rdf:type owl:DatatypeProperty ;
+                                                              rdfs:subPropertyOf <http://https://github.com/custibor99/SAIKS2025/description> ;
+                                                              rdfs:domain :Game ,
+                                                                          :GameSeries ,
+                                                                          <http://https://github.com/custibor99/SAIKS2025/CinematicUniverse> ;
+                                                              rdfs:range xsd:string .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/startDateTime
+<http://https://github.com/custibor99/SAIKS2025/startDateTime> rdf:type owl:DatatypeProperty ;
+                                                               rdfs:domain :Event ,
+                                                                           :Participation ;
+                                                               rdfs:range xsd:dateTime .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/summary
+<http://https://github.com/custibor99/SAIKS2025/summary> rdf:type owl:DatatypeProperty ;
+                                                         rdfs:subPropertyOf <http://https://github.com/custibor99/SAIKS2025/description> ;
+                                                         rdfs:domain :Game ,
+                                                                     :PurchesableContent ,
+                                                                     <http://https://github.com/custibor99/SAIKS2025/CinematicUniverse> ;
+                                                         rdfs:range xsd:string .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/teamName
+<http://https://github.com/custibor99/SAIKS2025/teamName> rdf:type owl:DatatypeProperty ;
+                                                          rdfs:subPropertyOf <http://https://github.com/custibor99/SAIKS2025/name> ;
+                                                          rdfs:domain :Team ;
+                                                          rdfs:range xsd:string .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/updateDate
+<http://https://github.com/custibor99/SAIKS2025/updateDate> rdf:type owl:DatatypeProperty ;
+                                                            rdfs:domain <http://https://github.com/custibor99/SAIKS2025/Sale> ;
+                                                            rdfs:range xsd:dateTime .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://https://github.com/custibor99/SAIKS2025#Company
+:Company rdf:type owl:Class ;
+         rdfs:subClassOf <http://https://github.com/custibor99/SAIKS2025/Participant> ;
+         rdfs:comment "A business entity that creates or publishes games"@en ;
+         rdfs:label "Company"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#CompanyRole
+:CompanyRole rdf:type owl:Class ;
+             rdfs:subClassOf :Role ;
+             owl:disjointWith :PersonRole .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#Competition
+:Competition rdf:type owl:Class ;
+             rdfs:subClassOf :Event ;
+             rdfs:comment "An organized gaming competition" ;
+             rdfs:label "Competition" .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#Country
+:Country rdf:type owl:Class ;
+         rdfs:subClassOf <http://https://github.com/custibor99/SAIKS2025/Location> ;
+         rdfs:comment "A country where a company is based"@en ;
+         rdfs:label "Country"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#Event
+:Event rdf:type owl:Class ;
+       owl:disjointWith :Game ,
+                        :PurchesableContent ;
+       rdfs:comment "An organized gaming event or competition"@en ;
+       rdfs:label "Event"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#Expansion
+:Expansion rdf:type owl:Class ;
+           rdfs:subClassOf :PurchesableContent ;
+           rdfs:comment "Significant additional content that expands a game"@en ;
+           rdfs:label "Expansion"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#Game
+:Game rdf:type owl:Class ;
+      owl:disjointWith :Team ,
+                       <http://ontology.eil.utoronto.ca/icity/Person/Person> ;
+      owl:hasKey ( <http://https://github.com/custibor99/SAIKS2025/companyName>
+                 ) ,
+                 ( <http://https://github.com/custibor99/SAIKS2025/gameTitle>
+                 ) ;
+      rdfs:comment "A video game"@en ;
+      rdfs:label "Game"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#GameSeries
+:GameSeries rdf:type owl:Class ;
+            rdfs:comment "A series of related games"@en ;
+            rdfs:label "Game Series"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#GameType
+:GameType rdf:type owl:Class ;
+          rdfs:comment "The type of gameplay a game offers"@en ;
+          rdfs:label "Game Type"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#Genre
+:Genre rdf:type owl:Class ;
+       rdfs:subClassOf :GameType ;
+       rdfs:comment "A category of games characterized by a particular style, form, or content" ;
+       rdfs:label "Genre"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#Item
+:Item rdf:type owl:Class ;
+      rdfs:subClassOf :PurchesableContent ;
+      rdfs:comment "An in-game item available as additional content"@en ;
+      rdfs:label "Item"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#Match
+:Match rdf:type owl:Class ;
+       rdfs:subClassOf :Event ;
+       rdfs:comment "A single instance of competitive gameplay"@en ;
+       rdfs:label "Match"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#Participation
+:Participation rdf:type owl:Class ;
+               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasParticipant ;
+                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass <http://https://github.com/custibor99/SAIKS2025/Participant>
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasRole ;
+                                 owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :Role
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hasParticipant ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass <http://https://github.com/custibor99/SAIKS2025/Participant>
+                               ] ;
+               owl:hasKey ( :hasParticipant
+                          ) ,
+                          ( :hasRole
+                          ) ,
+                          ( <http://https://github.com/custibor99/SAIKS2025/endDateTime>
+                          ) ,
+                          ( <http://https://github.com/custibor99/SAIKS2025/startDateTime>
+                          ) ;
+               rdfs:isDefinedBy "Participation"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#PersonRole
+:PersonRole rdf:type owl:Class ;
+            rdfs:subClassOf :Role .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#Platform
+:Platform rdf:type owl:Class ;
+          rdfs:comment "A hardware or software platform on which games can be played"@en ;
+          rdfs:label "Platform"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#PurchesableContent
+:PurchesableContent rdf:type owl:Class ;
+                    owl:disjointWith <http://ontology.eil.utoronto.ca/icity/Person/Person> ;
+                    rdfs:comment "Additional content or products related to a game"@en ;
+                    rdfs:label "PurchesableContent"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#Role
+:Role rdf:type owl:Class ;
+      rdfs:comment "Role"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#Skin
+:Skin rdf:type owl:Class ;
+      rdfs:subClassOf :PurchesableContent ;
+      rdfs:comment "Cosmetic item that changes a character's appearance"@en ;
+      rdfs:label "Skin"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025#Team
+:Team rdf:type owl:Class ;
+      rdfs:comment "A group of players who compete together"@en ;
+      rdfs:label "Team"@en .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/CinematicUniverse
+<http://https://github.com/custibor99/SAIKS2025/CinematicUniverse> rdf:type owl:Class .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/City
+<http://https://github.com/custibor99/SAIKS2025/City> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <http://https://github.com/custibor99/SAIKS2025/Location> .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/Console
+<http://https://github.com/custibor99/SAIKS2025/Console> rdf:type owl:Class ;
+                                                         rdfs:subClassOf :Platform .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/Location
+<http://https://github.com/custibor99/SAIKS2025/Location> rdf:type owl:Class .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/OperatingSystem
+<http://https://github.com/custibor99/SAIKS2025/OperatingSystem> rdf:type owl:Class .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/Participant
+<http://https://github.com/custibor99/SAIKS2025/Participant> rdf:type owl:Class .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/Player
+<http://https://github.com/custibor99/SAIKS2025/Player> rdf:type owl:Class ;
+                                                        rdfs:subClassOf <http://ontology.eil.utoronto.ca/icity/Person/Person> ;
+                                                        rdfs:label "Player" .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/Rating
+<http://https://github.com/custibor99/SAIKS2025/Rating> rdf:type owl:Class .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/Sale
+<http://https://github.com/custibor99/SAIKS2025/Sale> rdf:type owl:Class .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/Steet
+<http://https://github.com/custibor99/SAIKS2025/Steet> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <http://https://github.com/custibor99/SAIKS2025/Location> .
+
+
+###  http://ontology.eil.utoronto.ca/icity/Person/Person
+<http://ontology.eil.utoronto.ca/icity/Person/Person> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <http://https://github.com/custibor99/SAIKS2025/Participant> ;
+                                                      rdfs:comment "A person involved in games as developer, player, etc."@en ;
+                                                      rdfs:label "Person"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://https://github.com/custibor99/SAIKS2025/artResponsible
+<http://https://github.com/custibor99/SAIKS2025/artResponsible> rdf:type owl:NamedIndividual ,
+                                                                         :PersonRole .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/competitive
+<http://https://github.com/custibor99/SAIKS2025/competitive> rdf:type owl:NamedIndividual ,
+                                                                      :GameType .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/developmentStudio
+<http://https://github.com/custibor99/SAIKS2025/developmentStudio> rdf:type owl:NamedIndividual ,
+                                                                            :CompanyRole .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/macOs
+<http://https://github.com/custibor99/SAIKS2025/macOs> rdf:type owl:NamedIndividual ,
+                                                                <http://https://github.com/custibor99/SAIKS2025/OperatingSystem> .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/mmorpg
+<http://https://github.com/custibor99/SAIKS2025/mmorpg> rdf:type owl:NamedIndividual ,
+                                                                 :Genre .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/mobile
+<http://https://github.com/custibor99/SAIKS2025/mobile> rdf:type owl:NamedIndividual ,
+                                                                 <http://https://github.com/custibor99/SAIKS2025/Console> .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/multiPlayer
+<http://https://github.com/custibor99/SAIKS2025/multiPlayer> rdf:type owl:NamedIndividual ,
+                                                                      :GameType .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/musicResponsible
+<http://https://github.com/custibor99/SAIKS2025/musicResponsible> rdf:type owl:NamedIndividual ,
+                                                                           :PersonRole .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/nintendoSwitch
+<http://https://github.com/custibor99/SAIKS2025/nintendoSwitch> rdf:type owl:NamedIndividual ,
+                                                                         <http://https://github.com/custibor99/SAIKS2025/Console> .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/pc
+<http://https://github.com/custibor99/SAIKS2025/pc> rdf:type owl:NamedIndividual ,
+                                                             <http://https://github.com/custibor99/SAIKS2025/Console> .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/playStation1
+<http://https://github.com/custibor99/SAIKS2025/playStation1> rdf:type owl:NamedIndividual ,
+                                                                       <http://https://github.com/custibor99/SAIKS2025/Console> .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/playStation2
+<http://https://github.com/custibor99/SAIKS2025/playStation2> rdf:type owl:NamedIndividual ,
+                                                                       <http://https://github.com/custibor99/SAIKS2025/Console> .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/programmer
+<http://https://github.com/custibor99/SAIKS2025/programmer> rdf:type owl:NamedIndividual ,
+                                                                     :PersonRole .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/publisher
+<http://https://github.com/custibor99/SAIKS2025/publisher> rdf:type owl:NamedIndividual ,
+                                                                    :CompanyRole .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/racing
+<http://https://github.com/custibor99/SAIKS2025/racing> rdf:type owl:NamedIndividual ,
+                                                                 :Genre .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/rpg
+<http://https://github.com/custibor99/SAIKS2025/rpg> rdf:type owl:NamedIndividual ,
+                                                              :Genre .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/shooter
+<http://https://github.com/custibor99/SAIKS2025/shooter> rdf:type owl:NamedIndividual ,
+                                                                  :Genre .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/simulator
+<http://https://github.com/custibor99/SAIKS2025/simulator> rdf:type owl:NamedIndividual ,
+                                                                    :Genre .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/singlePlayer
+<http://https://github.com/custibor99/SAIKS2025/singlePlayer> rdf:type owl:NamedIndividual ,
+                                                                       :GameType .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/ubuntu
+<http://https://github.com/custibor99/SAIKS2025/ubuntu> rdf:type owl:NamedIndividual ,
+                                                                 <http://https://github.com/custibor99/SAIKS2025/OperatingSystem> .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/voiceActor
+<http://https://github.com/custibor99/SAIKS2025/voiceActor> rdf:type owl:NamedIndividual ,
+                                                                     :PersonRole .
+
+
+###  http://https://github.com/custibor99/SAIKS2025/windows
+<http://https://github.com/custibor99/SAIKS2025/windows> rdf:type owl:NamedIndividual ,
+                                                                  <http://https://github.com/custibor99/SAIKS2025/OperatingSystem> .
+
+
+[ rdfs:label "has member"
+] .
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+   owl:members ( :Event
+                 :Game
+                 :GameSeries
+                 :GameType
+                 :Participation
+                 :Platform
+                 :PurchesableContent
+                 :Role
+                 :Team
+                 <http://https://github.com/custibor99/SAIKS2025/CinematicUniverse>
+                 <http://https://github.com/custibor99/SAIKS2025/Location>
+                 <http://https://github.com/custibor99/SAIKS2025/OperatingSystem>
+                 <http://https://github.com/custibor99/SAIKS2025/Participant>
+                 <http://https://github.com/custibor99/SAIKS2025/Sale>
+               )
+ ] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Expansion
+                :Item
+                :Skin
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
