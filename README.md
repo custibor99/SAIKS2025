@@ -55,12 +55,20 @@ part of, developed, owns, availableOn (platform), competed in, worked on, publis
 During ontology engineering, make use of the advanced modelling features offered
 by OWL2 (refer to lecture 2).
 
+Used properties:
+- Union of Disjoint Classes
+- Union of Disjoint Properties
+- Keys
+- Property Chaining
+
 ## Ontology Design Patterns
 Additionally, illustrate the use of at least 3 different Ontologies
 Design Patterns (ODPs). These can be selected from those described during the lecture or
 from the ODP [website](http://ontologydesignpatterns.org/wiki/Main_Page)
-
+Used design patterns:
 - part of design patern
+- n-array (Sale, Match, Practitioner)
+- Roles as Individuals
 
 
 
