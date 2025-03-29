@@ -46,6 +46,7 @@ person, lead developer, art director, composer, voice actor, player (in the cont
 part of, developed, owns, availableOn (platform), competed in, worked on, published, for sale, won, lost, 
 
 ### Step 4. Define the classes and the class hierarchy
+![OR](doc/figures/ontology-hiearchy.png "Video Games hiearchy")
 ### Step 5. Define the properties of classes—slots
 ### Step 6. Define the facets of the slots
 
